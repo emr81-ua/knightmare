@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkdq7vaq6jgei"]
+
+[ext_resource type="PackedScene" uid="uid://bxdwr1535vvfd" path="res://kingdom/npcs/NPC.tscn" id="1_yt4as"]
+[ext_resource type="Texture2D" uid="uid://2oqo2aku04rb" path="res://Assets/0x72_DungeonTilesetII_v1.7.png" id="2_cxxkx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beti5"]
+atlas = ExtResource("2_cxxkx")
+region = Rect2(128, 169, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbxln"]
+atlas = ExtResource("2_cxxkx")
+region = Rect2(144, 169, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4fvo"]
+atlas = ExtResource("2_cxxkx")
+region = Rect2(160, 169, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sref"]
+atlas = ExtResource("2_cxxkx")
+region = Rect2(176, 169, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jkoj"]
+atlas = ExtResource("2_cxxkx")
+region = Rect2(192, 169, 16, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iywvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beti5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbxln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4fvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sref")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jkoj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Wizard" instance=ExtResource("1_yt4as")]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_iywvu")
+autoplay = "default"
+frame_progress = 0.123652
+
+[node name="Teleport" parent="." index="2"]
+target_scene = "res://Pruebas/prueba.tscn"

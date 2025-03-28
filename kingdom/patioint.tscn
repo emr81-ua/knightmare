@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctpfylgemj0ae"]
+
+[ext_resource type="Texture2D" uid="uid://d4cm6sxb36hx1" path="res://Assets/patioint.jpg" id="1_08veq"]
+[ext_resource type="Script" path="res://scripts/castle/patioint.gd" id="1_ml1yq"]
+[ext_resource type="PackedScene" uid="uid://cen51jaic13ya" path="res://player/knight.tscn" id="2_nbprd"]
+[ext_resource type="PackedScene" uid="uid://cgysma3ws7j83" path="res://Pruebas/audio_stream_player.tscn" id="4_7ovi6"]
+[ext_resource type="PackedScene" uid="uid://bkdq7vaq6jgei" path="res://kingdom/npcs/wizard.tscn" id="5_1p7yt"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lybnh"]
+a = Vector2(902, 911)
+b = Vector2(869, 620)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k81wi"]
+a = Vector2(839, 244)
+b = Vector2(175, 241)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_viiq7"]
+size = Vector2(31, 195)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfqom"]
+size = Vector2(41.5, 190.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2i5vw"]
+a = Vector2(185, 215)
+b = Vector2(160, 482)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx6gy"]
+size = Vector2(264.5, 160)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ml1yq")
+
+[node name="Knight" parent="." instance=ExtResource("2_nbprd")]
+z_index = 1
+position = Vector2(617, 429)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(492, 234)
+scale = Vector2(2.235, 2)
+texture = ExtResource("1_08veq")
+
+[node name="pared2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pared2"]
+shape = SubResource("SegmentShape2D_lybnh")
+
+[node name="pared3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pared3"]
+position = Vector2(-43, -435)
+shape = SubResource("SegmentShape2D_lybnh")
+
+[node name="pared4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pared4"]
+shape = SubResource("SegmentShape2D_k81wi")
+
+[node name="pared5" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pared5"]
+position = Vector2(430, 251)
+shape = SubResource("RectangleShape2D_viiq7")
+
+[node name="pared6" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pared6"]
+position = Vector2(588.75, 255.25)
+shape = SubResource("RectangleShape2D_xfqom")
+
+[node name="pared" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pared"]
+shape = SubResource("SegmentShape2D_2i5vw")
+
+[node name="pared7" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pared7"]
+position = Vector2(-50, 390)
+shape = SubResource("SegmentShape2D_2i5vw")
+
+[node name="acc_patio_der" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="acc_patio_der"]
+position = Vector2(990.25, 562)
+shape = SubResource("RectangleShape2D_tx6gy")
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("4_7ovi6")]
+
+[node name="Wizard" parent="." instance=ExtResource("5_1p7yt")]
+position = Vector2(697, 422)
+
+[connection signal="body_entered" from="acc_patio_der" to="." method="_on_acc_patio_der_body_entered"]

@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwkyb6ktfhe8v"]
+
+[ext_resource type="PackedScene" uid="uid://bkn82lhy3rubw" path="res://enemies/GenericEnemy.tscn" id="1_vdclm"]
+[ext_resource type="Script" path="res://scripts/enemies/boss_1.gd" id="2_mwv6l"]
+[ext_resource type="Texture2D" uid="uid://2oqo2aku04rb" path="res://Assets/0x72_DungeonTilesetII_v1.7.png" id="3_b4wie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgy58"]
+atlas = ExtResource("3_b4wie")
+region = Rect2(18, 386, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly0ia"]
+atlas = ExtResource("3_b4wie")
+region = Rect2(50, 386, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6c31"]
+atlas = ExtResource("3_b4wie")
+region = Rect2(82, 386, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpsje"]
+atlas = ExtResource("3_b4wie")
+region = Rect2(114, 386, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61tss"]
+atlas = ExtResource("3_b4wie")
+region = Rect2(146, 386, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hf3y"]
+atlas = ExtResource("3_b4wie")
+region = Rect2(178, 386, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6bla"]
+atlas = ExtResource("3_b4wie")
+region = Rect2(210, 386, 32, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62sew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgy58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly0ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6c31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpsje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61tss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hf3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6bla")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="boss1" instance=ExtResource("1_vdclm")]
+script = ExtResource("2_mwv6l")
+
+[node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(2, 2)
+
+[node name="Area2D" parent="." index="1"]
+scale = Vector2(2, 2)
+
+[node name="Control" parent="." index="2"]
+offset_top = -28.0
+offset_bottom = 12.0
+
+[node name="health_bar" parent="Control" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.225
+anchor_top = -0.075
+anchor_right = 0.225
+anchor_bottom = 0.025
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(4, 4)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_62sew")
+animation = &"idle"
+frame_progress = 0.0845397
+
+[node name="charge_timer" type="Timer" parent="." index="4"]

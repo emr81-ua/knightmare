@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://3njcbk1bfeno"]
+
+[ext_resource type="Script" path="res://scripts/castle/bedroom.gd" id="1_r6ubw"]
+[ext_resource type="Texture2D" uid="uid://dudfb0b4225qb" path="res://Assets/bedroom.jpg" id="1_u2j18"]
+[ext_resource type="PackedScene" uid="uid://cen51jaic13ya" path="res://player/knight.tscn" id="2_dl362"]
+[ext_resource type="PackedScene" uid="uid://cgysma3ws7j83" path="res://Pruebas/audio_stream_player.tscn" id="3_5l3ni"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bypou"]
+size = Vector2(185.992, 180.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x76yr"]
+size = Vector2(341, 158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk8ho"]
+size = Vector2(246, 420.5)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_r6ubw")
+
+[node name="Bedroom" type="Sprite2D" parent="."]
+position = Vector2(478, 361)
+scale = Vector2(1.91406, 1.5)
+texture = ExtResource("1_u2j18")
+
+[node name="Knight" parent="." instance=ExtResource("2_dl362")]
+position = Vector2(275, 500)
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("3_5l3ni")]
+
+[node name="run_start" type="Area2D" parent="."]
+position = Vector2(478, 361)
+scale = Vector2(1.91406, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="run_start"]
+position = Vector2(-14.1061, 29.6667)
+shape = SubResource("RectangleShape2D_bypou")
+
+[node name="acc_patio_der" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="acc_patio_der"]
+position = Vector2(505.5, 807)
+shape = SubResource("RectangleShape2D_x76yr")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(76, 499.5)
+shape = SubResource("RectangleShape2D_xk8ho")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(854, 530)
+shape = SubResource("RectangleShape2D_xk8ho")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(457, 273.75)
+shape = SubResource("RectangleShape2D_xk8ho")
+
+[node name="Start_label" type="Label" parent="."]
+offset_left = 402.0
+offset_top = 508.0
+offset_right = 518.0
+offset_bottom = 531.0
+text = "Press E to start"
+visible_characters = 0
+visible_ratio = 0.0
+
+[connection signal="body_entered" from="run_start" to="." method="_on_run_start_body_entered"]
+[connection signal="body_exited" from="run_start" to="." method="_on_run_start_body_exited"]
+[connection signal="body_entered" from="acc_patio_der" to="." method="_on_acc_patio_der_body_entered"]

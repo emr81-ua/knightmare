@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqw1hbkjyqskb"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_spawner.gd" id="1_seqnr"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_seqnr")
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="spawn_point" type="Node2D" parent="."]
+position = Vector2(203, 151)
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

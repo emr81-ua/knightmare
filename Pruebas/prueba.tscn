@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3iim72m423r3"]
+
+[ext_resource type="PackedScene" uid="uid://cen51jaic13ya" path="res://player/knight.tscn" id="1_xt5vx"]
+[ext_resource type="PackedScene" uid="uid://dqw1hbkjyqskb" path="res://enemies/enemy_spawner.tscn" id="2_vr813"]
+[ext_resource type="PackedScene" uid="uid://cwkyb6ktfhe8v" path="res://enemies/boss1.tscn" id="4_aaund"]
+[ext_resource type="Texture2D" uid="uid://bbodmqykiw3e0" path="res://Assets/fondo.webp" id="4_ig5tc"]
+[ext_resource type="PackedScene" uid="uid://c671g06ept2ri" path="res://enemies/ChasingEnemy.tscn" id="4_ji8nt"]
+
+[node name="Prueba" type="Node2D"]
+
+[node name="Knight" parent="." instance=ExtResource("1_xt5vx")]
+position = Vector2(488, 410)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("2_vr813")]
+position = Vector2(491, 850)
+enemy_scene = ExtResource("4_ji8nt")
+
+[node name="Fondo" type="Sprite2D" parent="."]
+z_index = -6
+position = Vector2(477, 504)
+texture = ExtResource("4_ig5tc")
+metadata/_edit_lock_ = true
+
+[node name="boss1" parent="." instance=ExtResource("4_aaund")]
+position = Vector2(757, 312)

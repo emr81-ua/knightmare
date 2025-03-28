@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://u4mi0rf0685a"]
+
+[ext_resource type="Script" path="res://Utiles/teleport.gd" id="1_w1ma4"]
+
+[node name="Teleport" type="Area2D"]
+script = ExtResource("1_w1ma4")
+target_scene = "<null>"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -50.0
+offset_top = 5.0
+offset_right = 51.0
+offset_bottom = 31.0
+scale = Vector2(1.03662, 1)
+fit_content = true
+scroll_active = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

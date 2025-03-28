@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://c671g06ept2ri"]
+
+[ext_resource type="PackedScene" uid="uid://bkn82lhy3rubw" path="res://enemies/GenericEnemy.tscn" id="1_vmrtt"]
+[ext_resource type="Texture2D" uid="uid://8n48d0dlm5ie" path="res://Assets/slime_green.png" id="2_wp08o"]
+[ext_resource type="Script" path="res://scripts/enemies/chasing_enemy.gd" id="2_yepcd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdp2g"]
+atlas = ExtResource("2_wp08o")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krdvs"]
+atlas = ExtResource("2_wp08o")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dqnb"]
+atlas = ExtResource("2_wp08o")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtip5"]
+atlas = ExtResource("2_wp08o")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0jjo"]
+atlas = ExtResource("2_wp08o")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kgtfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdp2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krdvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dqnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtip5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0jjo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="ChasingEnemy" instance=ExtResource("1_vmrtt")]
+position = Vector2(0, 0)
+script = ExtResource("2_yepcd")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 12)
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kgtfo")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" parent="." index="2" groups=["enemy"]]
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, 12)
+
+[node name="health_bar" parent="Control" index="0"]
+offset_left = -9.0
+offset_top = -7.0
+offset_right = 9.0
+value = 100.0

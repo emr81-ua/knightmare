@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3iim72m423r3"]
+
+[ext_resource type="Texture2D" uid="uid://2snr21bpxneu" path="res://Assets/platform.png" id="1_1uhru"]
+[ext_resource type="PackedScene" uid="uid://cen51jaic13ya" path="res://Scenes/knight.tscn" id="2_bcuw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tdw8"]
+size = Vector2(486, 36)
+
+[node name="Prueba" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(560.5, 528.25)
+shape = SubResource("RectangleShape2D_1tdw8")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(567.5, 535.25)
+scale = Vector2(10.18, 5.18421)
+texture = ExtResource("1_1uhru")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_bcuw6")]
+position = Vector2(225, 314)
+jump_speed = 400
